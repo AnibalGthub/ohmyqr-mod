@@ -14,7 +14,7 @@ trap 'printf "\n";stop;exit 1' 2
 
 dependencies() {
 
-command -v php > /dev/null 2>&1 || { echo >&2 Se requiere de php pero no esta instalado, ejecuta el instalador."; exit 1; }
+command -v php > /dev/null 2>&1 || { echo >&2 "Se requiere de php pero no esta instalado, ejecuta el instalador."; exit 1; }
 command -v curl > /dev/null 2>&1 || { echo >&2 "Se requiere de curl pero no esta instalado, ejecuta el instalador.."; exit 1; }
 command -v scrot > /dev/null 2>&1 || { echo >&2 "Se requiere de scrot pero no esta instalado, ejecuta el instalador."; exit 1; }
 command -v xdotool > /dev/null 2>&1 || { echo >&2 "Se requiere de xdotool pero no esta instalado, ejecuta el instalador."; exit 1; }
