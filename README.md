@@ -5,7 +5,7 @@
 2.  Puedes enmascarar el link como tu quieras
 3.  Intrucciones mas claras
 
- Instalación-Debian/Kali/Parrot/Termux (Ejecutar sin root)
+ Instalación-Debian/Kali/Parrot/Termux (Ejecutar sin root los comandos)
 
 * `git clone https://github.com/AnibalGthub/ohmyqr-mod.git`
 * `cd ohmyqr-mod`
