@@ -3,15 +3,21 @@
 # Coded by: thelinuxchoice (You dont become a coder by just changing the credits)
 # Github: https://github.com/thelinuxchoice/ohmyqr
 
+if [ "$(id -u)" != "1000" ]; then
+   echo "Ejecuta este script como usuario sin privilegios (su nombreusuario o exit)."
+   exit 1
+fi
+
+
 trap 'printf "\n";stop;exit 1' 2
 
 
 dependencies() {
 
-command -v php > /dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Install it. Aborting."; exit 1; }
-command -v curl > /dev/null 2>&1 || { echo >&2 "I require curl but it's not installed. Install it. Aborting."; exit 1; }
-command -v scrot > /dev/null 2>&1 || { echo >&2 "I require scrot but it's not installed. Install it. Aborting."; exit 1; }
-command -v xdotool > /dev/null 2>&1 || { echo >&2 "I require xdotool but it's not installed. Install it. Aborting."; exit 1; }
+command -v php > /dev/null 2>&1 || { echo >&2 Se requiere de php pero no esta instalado, ejecuta el instalador."; exit 1; }
+command -v curl > /dev/null 2>&1 || { echo >&2 "Se requiere de curl pero no esta instalado, ejecuta el instalador.."; exit 1; }
+command -v scrot > /dev/null 2>&1 || { echo >&2 "Se requiere de scrot pero no esta instalado, ejecuta el instalador."; exit 1; }
+command -v xdotool > /dev/null 2>&1 || { echo >&2 "Se requiere de xdotool pero no esta instalado, ejecuta el instalador."; exit 1; }
 
 }
 
