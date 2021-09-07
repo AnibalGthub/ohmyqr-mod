@@ -1,7 +1,4 @@
 #!/bin/bash
-# OhMyQR v1.0
-# Coded by: thelinuxchoice (You dont become a coder by just changing the credits)
-# Github: https://github.com/thelinuxchoice/ohmyqr
 
 if [ "$(id -u)" != "1000" ]; then
    echo "Ejecuta este script como usuario sin privilegios (su nombreusuario o exit)."
@@ -75,13 +72,13 @@ printf 'Y88b. .d88P 888  888 888   \"   888 Y88b 888 Y88b.Y8b88P 888  T88b   \n'
 printf ' \"Y88888P\"  888  888 888       888  \"Y88888  \"Y888888\"  888   T88b  \n'
 printf "                                        888        Y8b              \n"
 printf "                                   Y8b d88P                         \n"
-printf '                                    \"Y88P\" v1.0                     \e[0m\n'
+printf '                                    \"Y88P\" v1.2                     \e[0m\n'
 
 printf "\n"
-printf "\e[1;93m  ::: Author: @thelinuxchoice\e[0m\n"
+printf "\e[1;93m  ::: Mejorado: @AnibalTlgram\e[0m\n"
 printf "\n"
-printf "  \e[101m\e[1;77m:: Disclaimer: Developers assume no liability and are not    ::\e[0m\n"
-printf "  \e[101m\e[1;77m:: responsible for any misuse or damage caused by OhMyQR     ::\e[0m\n"
+printf "  \e[101m\e[1;77m:: Descargo: No asumo ni me hago responsable del uso    ::\e[0m\n"
+printf "  \e[101m\e[1;77m:: o el daño que cometan con OhMyQR , es un script educativo     ::\e[0m\n"
 printf "\n"
 }
 
