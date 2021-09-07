@@ -77,8 +77,8 @@ printf '                                    \"Y88P\" v1.2                     \e
 printf "\n"
 printf "\e[1;93m  ::: Mejorado: @AnibalTlgram\e[0m\n"
 printf "\n"
-printf "  \e[101m\e[1;77m:: Descargo: No asumo ni me hago responsable del uso    ::\e[0m\n"
-printf "  \e[101m\e[1;77m:: o el daño que cometan con OhMyQR , es un script educativo     ::\e[0m\n"
+printf "  \e[101m\e[1;77m:: Descargo: No asumo, ni me hago responsable del uso    ::\e[0m\n"
+printf "  \e[101m\e[1;77m:: o el daño que causen con OhMyQR , es un script educativo     ::\e[0m\n"
 printf "\n"
 }
 
